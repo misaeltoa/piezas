@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require('cors'); // Importar cors
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -9,13 +9,13 @@ const port = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
-    origin: 'https://piezasfront.onrender.com/', // Reemplaza con la URL de tu frontend
+    origin: 'https://piezasfront.onrender.com', // Sin la barra final
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type'],
-  };
+};
   
-  app.use(cors(corsOptions));
-  
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
 
 // Conexión a MongoDB Atlas
 const uri = process.env.MONGODB_URI;

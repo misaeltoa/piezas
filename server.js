@@ -14,10 +14,6 @@ app.use(bodyParser.json());
 // Conexión a MongoDB Atlas
 const uri = process.env.MONGODB_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-const cors = require('cors');
-app.use(cors({
-  origin: '*'
-}));
 
 const connection = mongoose.connection;
 connection.once('open', () => {
